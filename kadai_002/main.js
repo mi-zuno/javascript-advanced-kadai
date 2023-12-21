@@ -93,7 +93,7 @@ const rankCheck = (score) => {
   return `${score}文字打てました！\n${text}\n【OK】リトライ/【キャンセル】終了`;
 };
 
-const gameover = (id) => {
+const gameOver = (id) => {
   clearInterval(id);
   typedField.textContent = "";
   setTimeout(() => {
@@ -115,7 +115,7 @@ const timer = () => {
       setTimeout(() => {
         untypedField.textContent = "タイムアップ！";
       }, 10);
-      gameover(id);
+      gameOver(id);
     }
   }, 1000);
 };
