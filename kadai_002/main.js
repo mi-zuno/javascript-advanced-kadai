@@ -3,8 +3,8 @@ let typed = "";
 let score = 0;
 let countLetter = 0;
 
-const untypedfield = document.getElementById("untyped");
-const typedfield = document.getElementById("typed");
+const untypedField = document.getElementById("untyped");
+const typedField = document.getElementById("typed");
 const wrap = document.getElementById("wrap");
 const start = document.getElementById("start");
 const count = document.getElementById("count");
@@ -45,12 +45,12 @@ const textList = [
 
 const createText = () => {
   typed = "";
-  typedfield.textContent = typed;
+  typedField.textContent = typed;
 
   let random = Math.floor(Math.random() * textList.length);
 
   untyped = textList[random];
-  untypedfield.textContent = untyped;
+  untypedField.textContent = untyped;
 };
 
 const keyPress = (e) => {
@@ -70,8 +70,8 @@ const keyPress = (e) => {
   wrap.classList.remove("mistyped");
   typed += untyped.substring(0, 1);
   untyped = untyped.substring(1);
-  typedfield.textContent = typed;
-  untypedfield.textContent = untyped;
+  typedField.textContent = typed;
+  untypedField.textContent = untyped;
   if (untyped === "") {
     createText();
   }
@@ -95,6 +95,7 @@ const rankCheck = (score) => {
 
 const gameover = (id) => {
   clearInterval(id);
+  typedField.textContent = "";
   setTimeout(() => {
     const result = confirm(rankCheck(score));
     if (result == true) {
@@ -112,7 +113,7 @@ const timer = () => {
 
     if (time <= 0) {
       setTimeout(() => {
-        untypedfield.textContent = "タイムアップ！";
+        untypedField.textContent = "タイムアップ！";
       }, 10);
       gameover(id);
     }
@@ -129,4 +130,4 @@ start.addEventListener("click", () => {
   document.addEventListener("keypress", keyPress);
 });
 
-untypedfield.textContent = "スタートボタンで開始";
+untypedField.textContent = "スタートボタンで開始";
